@@ -93,7 +93,10 @@ router.post('/',upload.single('imageUrl'),(req,res)=>{
     }
     newProduct
       .save()
-      .then(product=>res.status(201).json(product))
+      .then(product=>{
+        console.log(product)
+        res.status(201).json(product)
+      })
       .catch(err=>res.status(500).json({error:err}))
 });
 
@@ -115,7 +118,7 @@ Key:imageUrl  Value: Select File
 =========================
 //how to get photo at chrome
 
-localhost:5000/uploads/2019-07-01T13:39:10.782Za.jpg
+localhost:5000/uploads/2019-07-02T03:55:05.122Za.jpg
 */
 
 // upload.single('imageUrl'),

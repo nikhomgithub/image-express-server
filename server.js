@@ -1,11 +1,15 @@
-const express=require('express');
+const express=require('express'); 
 const mongoose=require('mongoose');
 const config=require('config');
 const morgan = require("morgan");
+const cors=require('cors');
 
 const app=express();
 //Bodyparser Middleware
 app.use(express.json());
+
+// allow cross-origin requests
+app.use(cors());
 
 //DB Config
 //const db=require('./config/keys').mongoURI;
@@ -21,20 +25,21 @@ mongoose
   .catch(err=>console.log(err));
 
 app.use(morgan("dev"));
+//Make uploads as public access
 app.use('/uploads',express.static('uploads'))
 //Use Routes
 app.use('/product', require('./api/product'));
 
-
-
+//If pass until now it is error , set up error
 app.use((req, res, next) => {
   const error = new Error("Not found");
   error.status = 404;
   next(error);
 });
 
+//at the end send error to chrome
 app.use((error, req, res, next) => {
-  res.status(error.status || 500);
+  res.status(error.status || 500);  
   res.json({
     error: {
       message: error.message
