@@ -1,0 +1,27 @@
+
+Client 
+======
+<App>
+  state={$selectedFile,$name}
+  
+  onNameChange=>{e.target.value}
+  fileSelectedHandler=>{selectedFile:event.target.files[0]} 
+  fileUploadHandler=> fd=new FormData(); //file, filename=> axio.post'/product' 
+  
+  <Form>
+    <input type="text "onNameChange>
+    //<input type="file" fileSelectedHandler>  //but display 'none' ref=fileInput  => fileInput2
+    <button fileInput2.click()> 
+    <button fileUploadHandler>
+    
+Server.js
+======
+ express.json()
+ cors()
+ mongoose.connect()
+ morgan()
+ express.static ('/upload')
+ post '/product',  upload.single('imageUrl')
+                  newProduct.save   name:req.body.name,
+                                    imageUrl:req.file.path
+ 
