@@ -78,7 +78,11 @@ export default class App extends Component {
      const fd=new FormData();
      fd.append('imageUrl',this.state.selectedFile,this.state.selectedFile.name);
      axios
-      .get('/product')
+      .get('/product',fd,{
+            onUploadProgress: progressEvent=>{
+              console.log('Upload Progress' + Math.round(progressEvent.loaded/progressEvent.total*100)+'%')
+            }
+          })
         .then(res=>{console.log(res.data)})
         .catch(err=>{console.log(err)})
   }
@@ -92,6 +96,19 @@ export default class App extends Component {
     )
   }
   */
+  
+  /*
+  =========================
+  How to make a ref
+  
+  <input
+    style={{display:'none'}}                     // not show this input
+    ref={fileInput={this.fileInput=fileInput}}   //create this.fileInput    in class level, now we can link to this.fileInput 
+  />
+  
+  <button onclick={()=>this.fileInput.click()}> activate input</button> 
+  */
+  
   //
 
   render() {
