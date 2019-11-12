@@ -56,6 +56,43 @@ export default class App extends Component {
 
   }
   //Do not forget to set proxy at package file
+  
+  
+  
+  /*
+  ==========
+  Basic
+  ==========
+  
+  state={
+    selectedFile:null,
+  }
+  
+  fileSelectedHandler = event = {
+    this.setState({
+      selectedFile:event.target.files[0]
+    })
+  }
+ 
+  fileUploadHandler =()=>{
+     const fd=new FormData();
+     fd.append('imageUrl',this.state.selectedFile,this.state.selectedFile.name);
+     axios
+      .get('/product')
+        .then(res=>{console.log(res.data)})
+        .catch(err=>{console.log(err)})
+  }
+  
+  render(){
+    return(
+      <div>
+        <input type = "file" onChange={this.fileSelectedHandler}/>
+        <button onClick={this.fileUploadHandler}>Upload</button>
+      </div>
+    )
+  }
+  */
+  //
 
   render() {
     return (
